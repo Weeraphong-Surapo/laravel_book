@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    
+
     <!-- Styles -->
     <style>
         /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
@@ -841,7 +841,7 @@
     <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
         <div class="container">
-            <a class="navbar-brand" href="{{url('/')}}">Furni<span>.</span></a>
+            <a class="navbar-brand" href="{{ url('/') }}">Furni<span>.</span></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
                 aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -850,21 +850,27 @@
 
             <div class="collapse navbar-collapse" id="navbarsFurni">
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}">หน้าหลัก</a>
-                    </li>
-                    <li><a class="nav-link" href="{{ route('shopbook.index') }}">สินค้าทั้งหมด</a></li>
 
-                    <li><a class="nav-link" href="{{ url('/history') }}">ประวัติการซื้อ</a></li>
+
+
                     @if (Auth::check() && Auth::user()->is_admin)
                         <li><a class="nav-link" href="{{ url('/order') }}">ดูออเดอร์</a></li>
+                        <li><a class="nav-link" href="{{ url('/admin/reportall') }}">ดูกราฟ</a></li>
                         <li><a class="nav-link" href="{{ url('/admin/allbook') }}">จัดการสินค้า</a></li>
+                    @else
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url('/') }}">หน้าหลัก</a>
+                        </li>
+                        <li><a class="nav-link" href="{{ route('shopbook.index') }}">สินค้าทั้งหมด</a></li>
+                        <li><a class="nav-link" href="{{ url('/history') }}">ประวัติการซื้อ</a></li>
                     @endif
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                     <li><a class="nav-link" href="{{ url('/profile') }}"><img src="/images/user.svg"></a></li>
-                    <li><a class="nav-link" href="{{ url('/cart') }}"><img src="/images/cart.svg"></a></li>
+                    @if (Auth::check() && !Auth::user()->is_admin)
+                        <li><a class="nav-link" href="{{ url('/cart') }}"><img src="/images/cart.svg"></a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -878,8 +884,7 @@
             <div class="row justify-content-between">
                 <div class="col-lg-5">
                     <div class="intro-excerpt">
-                        <h1>เว็บไซต์ขายหนังสือ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span clsas="d-block">mini
-                                project</span></h1>
+                        <h1>เว็บไซต์ขายหนังสือ</h1>
                         <p><a href="{{ route('shopbook.index') }}" class="btn btn-secondary me-2">เลือกซื้อเลย</a>
                     </div>
                 </div>
@@ -900,7 +905,7 @@
             <div class="row g-5 mb-5">
 
 
-        </div>
+            </div>
     </footer>
     <!-- End Footer Section -->
 

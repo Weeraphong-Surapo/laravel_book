@@ -31,6 +31,9 @@ Route::resource('/profile', ProfileController::class)->middleware('auth');
 Route::resource('/history', HistoryController::class)->middleware('auth');
 Route::get('/generate-pdfProduct',[BookController::class,'reportPDF']);
 Route::get('/order',[OrderContoller::class,'index']);
+// Route::get('/thankyou',function(){
+//     return view('thankyou');
+// });
 
 Route::group(['prefix'=>'admin'],function(){
     Route::resource('/allbook', AdminBookController::class);

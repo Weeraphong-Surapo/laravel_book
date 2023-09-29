@@ -44,7 +44,7 @@ class CheckOutController extends Controller
 
         $cartUser = Cart::where('user_id',Auth::user()->id);
         $cartUser->delete();
-        return to_route('allbook.index');
+        return view('thankyou');
 
 
 

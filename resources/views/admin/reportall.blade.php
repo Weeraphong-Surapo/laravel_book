@@ -16,20 +16,21 @@
     <script>
         var productNames = [];
         var productaty = [];
-      
-        // Loop through the products and populate the arrays
+
         @foreach ($productChart as $product)
             productNames.push('{{ $product['product_name'] }}');
             productaty.push('{{ $product['product_qty'] }}');
         @endforeach
+        console.log(productaty);
+
         var ctx = document.getElementById('myChart').getContext('2d');
 
         // Define chart data
         var data = {
-            labels: [productNames],
+            labels: productNames,
             datasets: [{
                 label: 'รายงานสินค้าในร้าน',
-                data: [productaty],
+                data: productaty,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

@@ -17,6 +17,6 @@ class ReportController extends Controller
                 'product_qty' => $product->book_qty,
             ];
         });
-        return view('reportall',compact('productChart'));
+        return view('admin.reportall',compact('productChart'));
     }
 }

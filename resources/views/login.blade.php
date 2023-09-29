@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="my-input">รหัสผ่าน</label>
-                            <input required class="form-control" type="text" name="password" placeholder="" value="{{old('password')}}">
+                            <input required class="form-control" type="password" name="password" placeholder="" value="{{old('password')}}">
                         </div>
                         <div class="form-text  my-2">ยังไม่มีบัญชีใช่ไหม? <a href="{{ route('register') }}">สมัครเลย</a>
                         </div>
